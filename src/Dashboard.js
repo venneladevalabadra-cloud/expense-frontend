@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaWallet } from "react-icons/fa";
 import AddExpense from "./AddExpense";
