@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaList } from "react-icons/fa";
 
-function ExpenseList() {
+function ExpenseList({ refreshKey, onExpenseDeleted }) {
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
     loadExpenses();
-  }, []);
+  }, [refreshKey]);
 
   const loadExpenses = () => {
     axios.get("https://smart-expense-backend-sbtd.onrender.com/api/expenses")
@@ -24,6 +24,7 @@ function ExpenseList() {
       .then(() => {
         alert("Deleted!");
         loadExpenses();
+        onExpenseDeleted();
       })
       .catch(() => {
         alert("Delete failed");

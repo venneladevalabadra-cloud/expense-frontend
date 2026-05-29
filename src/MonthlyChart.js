@@ -10,7 +10,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-function MonthlyChart() {
+function MonthlyChart({ refreshKey }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function MonthlyChart() {
       .then(res => {
         processData(res.data);
       });
-  }, []);
+  }, [refreshKey]);
 
   const processData = (expenses) => {
     const monthMap = {};

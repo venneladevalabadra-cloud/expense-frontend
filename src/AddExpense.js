@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 
-function AddExpense() {
+function AddExpense({ onExpenseSaved }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -18,6 +18,11 @@ function AddExpense() {
     .then(res => {
       alert("Expense Saved!");
       console.log(res.data);
+      setTitle("");
+      setAmount("");
+      setCategory("");
+      setDate("");
+      onExpenseSaved();
     })
     .catch(err => {
       alert("Error saving expense");
@@ -28,10 +33,10 @@ function AddExpense() {
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Add Expense</h2>
 
-      <input placeholder="Title" onChange={(e) => setTitle(e.target.value)} /><br /><br />
-      <input placeholder="Amount" onChange={(e) => setAmount(e.target.value)} /><br /><br />
-      <input placeholder="Category" onChange={(e) => setCategory(e.target.value)} /><br /><br />
-      <input type="date" onChange={(e) => setDate(e.target.value)} /><br /><br />
+      <input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} /><br /><br />
+      <input placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} /><br /><br />
+      <input placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)} /><br /><br />
+      <input type="date" value={date} onChange={(e) => setDate(e.target.value)} /><br /><br />
 
       <button style={buttonStyle} onClick={saveExpense}>
         <FaPlus /> Save Expense

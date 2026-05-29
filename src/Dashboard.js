@@ -8,6 +8,7 @@ import MonthlyChart from "./MonthlyChart";
 
 function Dashboard() {
   const [total, setTotal] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     const fetchTotal = () => {
@@ -21,7 +22,11 @@ function Dashboard() {
     const interval = setInterval(fetchTotal, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [refreshKey]);
+
+  const refreshExpenses = () => {
+    setRefreshKey(current => current + 1);
+  };
 
   return (
     <div>
@@ -34,19 +39,19 @@ function Dashboard() {
 
       <div style={styles.container}>
         <div style={styles.card}>
-          <AddExpense />
+          <AddExpense onExpenseSaved={refreshExpenses} />
         </div>
 
         <div style={styles.card}>
-          <ExpenseChart />
+          <ExpenseChart refreshKey={refreshKey} />
         </div>
 
         <div style={styles.card}>
-          <MonthlyChart />
+          <MonthlyChart refreshKey={refreshKey} />
         </div>
 
         <div style={styles.card}>
-          <ExpenseList />
+          <ExpenseList refreshKey={refreshKey} onExpenseDeleted={refreshExpenses} />
         </div>
       </div>
     </div>

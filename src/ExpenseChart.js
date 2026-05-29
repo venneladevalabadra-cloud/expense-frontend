@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
-function ExpenseChart() {
+function ExpenseChart({ refreshKey }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function ExpenseChart() {
       .then(res => {
         processData(res.data);
       });
-  }, []);
+  }, [refreshKey]);
 
   const processData = (expenses) => {
     const map = {};
