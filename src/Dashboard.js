@@ -11,7 +11,7 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchTotal = () => {
-      axios.get("http://localhost:8080/api/expenses/total")
+      axios.get("https://smart-expense-backend-sbtd.onrender.com/api/expenses/total")
         .then(res => setTotal(res.data))
         .catch(err => console.log(err));
     };

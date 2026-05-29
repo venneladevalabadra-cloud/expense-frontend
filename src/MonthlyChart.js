@@ -14,7 +14,7 @@ function MonthlyChart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/expenses")
+    axios.get("https://smart-expense-backend-sbtd.onrender.com/api/expenses")
       .then(res => {
         processData(res.data);
       });

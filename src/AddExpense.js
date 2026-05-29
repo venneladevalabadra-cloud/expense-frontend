@@ -9,7 +9,7 @@ function AddExpense() {
   const [date, setDate] = useState("");
 
   const saveExpense = () => {
-    axios.post("http://localhost:8080/api/expenses", {
+    axios.post("https://smart-expense-backend-sbtd.onrender.com/api/expenses", {
       title,
       amount,
       category,

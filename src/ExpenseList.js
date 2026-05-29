@@ -10,7 +10,7 @@ function ExpenseList() {
   }, []);
 
   const loadExpenses = () => {
-    axios.get("http://localhost:8080/api/expenses")
+    axios.get("https://smart-expense-backend-sbtd.onrender.com/api/expenses")
       .then(res => {
         setExpenses(res.data);
       })
@@ -20,7 +20,7 @@ function ExpenseList() {
   };
 
   const deleteExpense = (id) => {
-    axios.delete(`http://localhost:8080/api/expenses/${id}`)
+    axios.delete(`https://smart-expense-backend-sbtd.onrender.com/api/expenses/${id}`)
       .then(() => {
         alert("Deleted!");
         loadExpenses();

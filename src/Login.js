@@ -2,7 +2,7 @@ import axios from "axios";
 
 function Login(props) {
   const handleLogin = () => {
-    axios.get("http://localhost:8080/api/expenses/test")
+    axios.get("https://smart-expense-backend-sbtd.onrender.com/api/expenses/test")
         .then(res => {
           alert(res.data);
           props.onLogin();
